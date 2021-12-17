@@ -1,20 +1,108 @@
-// Console_human.cpp : This file contains the 'main' function. Program execution begins and ends there.
-//
-
 #include <iostream>
+#include "Worker.h"
+#include "Student.h"
+#include "Schoolchild.h"
+
+using namespace std;
 
 int main()
 {
-    std::cout << "Hello World!\n";
+	setlocale(LC_ALL, "rus");
+
+	int ch;
+	do {
+		cout << "Выберите чьи данные хотите ввести :\n "
+			<< "1 - Работник \n"
+			<< " 2 - Студент \n"
+			<< " 3  - Школьник \n"
+			<< " 0  - Выход \n"
+			<< " Ваш выбор : ";
+		cin >> ch;
+		cin.ignore();
+		switch (ch)
+		{
+		case 1:
+		{
+			char* lastname = new char[15];
+			cout << " Введите фамилию :";
+			gets_s(lastname, 15);
+
+			char* name = new char[10];
+			cout << " Введите имя :";
+			gets_s(name, 10);
+
+			char* otchestvo = new char[15];
+			cout << " Введите отчество:";
+			gets_s(otchestvo, 15);
+			int age;
+			cout << " Введите возраст : ";
+			cin >> age;
+			float zp;
+			cout << " Введите зарплату :";
+			cin >> zp;
+			int workhours;
+			cout << " Введите часы работы : ";
+			cin >> workhours;
+			Worker example(zp, workhours, name, lastname, otchestvo, age);
+			cout << example;
+			break;
+		}
+		case 2:
+		{
+			char* lastname = new char[15];
+			cout << " Введите фамилию :";
+			gets_s(lastname, 15);
+
+			char* name = new char[10];
+			cout << " Введите имя :";
+			gets_s(name, 10);
+
+			char* otchestvo = new char[15];
+			cout << " Введите отчество:";
+			gets_s(otchestvo, 15);
+			char* group = new char[10];
+			cout << " Введите группу :";
+			gets_s(group, 10);
+			int age;
+			cout << " Введите возраст : ";
+			cin >> age;
+			float step;
+			cout << " Введите степендию :";
+			cin >> step;
+			Student example(group, step, name, lastname, otchestvo, age);
+			cout << example;
+			break;
+		}
+		case 3:
+		{
+			char* lastname = new char[15];
+			cout << " Введите фамилию :";
+			gets_s(lastname, 15);
+
+			char* name = new char[10];
+			cout << " Введите имя :";
+			gets_s(name, 10);
+
+			char* otchestvo = new char[15];
+			cout << " Введите отчество:";
+			gets_s(otchestvo, 15);
+			int age;
+			cout << " Введите возраст : ";
+			cin >> age;
+			int klass;
+			cout << " Введите класс : ";
+			cin >> klass;
+
+			float bal;
+			cout << " Введите средний бал :";
+			cin >> bal;
+
+			Schoolchild example(klass, bal, name, lastname, otchestvo, age);
+			cout << example;
+			break;
+		}
+
+		}
+	} while (ch != 0);
 }
 
-// Run program: Ctrl + F5 or Debug > Start Without Debugging menu
-// Debug program: F5 or Debug > Start Debugging menu
-
-// Tips for Getting Started: 
-//   1. Use the Solution Explorer window to add/manage files
-//   2. Use the Team Explorer window to connect to source control
-//   3. Use the Output window to see build output and other messages
-//   4. Use the Error List window to view errors
-//   5. Go to Project > Add New Item to create new code files, or Project > Add Existing Item to add existing code files to the project
-//   6. In the future, to open this project again, go to File > Open > Project and select the .sln file
